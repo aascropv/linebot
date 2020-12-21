@@ -12,18 +12,16 @@ def send_text_message(reply_token, text):
     # line_bot_api.reply_message(reply_token, TextSendMessage(text=text))
     if (text == "Trigger state1"):
         message = TextSendMessage(text = 'Hello world')
+        message2 = TextSendMessage(text = "https://www.learncodewithmike.com/2020/07/python-web-scraping-line-bot.html")
         print("test state1")
         line_bot_api.reply_message(reply_token, message)
+        line_bot_api.reply_message(reply_token, message2)
     elif (text == "Trigger state2"):
         # message = ImageSendMessage(
         #     original_content_url = '',
         #     preview_image_url = ''
         # )
-        message = {
-            "type" : "text",
-            "text" : "state2"
-        }
-        line_bot_api.reply_message(reply_token, message)
+        # line_bot_api.reply_message(reply_token, message)
     return "OK"
 
 
