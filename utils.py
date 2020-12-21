@@ -1,7 +1,7 @@
 import os
 
 from linebot import LineBotApi, WebhookParser
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -10,9 +10,19 @@ channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 def send_text_message(reply_token, text):
     line_bot_api = LineBotApi(channel_access_token)
     # line_bot_api.reply_message(reply_token, TextSendMessage(text=text))
-    message = TextSendMessage(text = 'Hello world')
-    line_bot_api.reply_message(reply_token, message)
-
+    if (text == "Trigger state1"):
+        message = TextSendMessage(text = 'Hello world')
+        line_bot_api.reply_message(reply_token, message)
+    elif (text == "Trigger state2"):
+        # message = ImageSendMessage(
+        #     original_content_url = '',
+        #     preview_image_url = ''
+        # )
+        message = {
+            "type" = "text",
+            "text" = "state2"
+        }
+        line_bot_api.reply_message(reply_token, message)
     return "OK"
 
 
