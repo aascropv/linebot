@@ -20,8 +20,8 @@ def send_text_message(reply_token, text):
         #     preview_image_url = ''
         # )
         message = {
-            type : "text",
-            text : "state2"
+            "type" : "text",
+            "text" : "state2"
         }
         line_bot_api.reply_message(reply_token, message)
     return "OK"
