@@ -12,6 +12,7 @@ def send_text_message(reply_token, text):
     # line_bot_api.reply_message(reply_token, TextSendMessage(text=text))
     if (text == "Trigger state1"):
         message = TextSendMessage(text = 'Hello world')
+        print("test state1")
         line_bot_api.reply_message(reply_token, message)
     elif (text == "Trigger state2"):
         # message = ImageSendMessage(
@@ -19,8 +20,8 @@ def send_text_message(reply_token, text):
         #     preview_image_url = ''
         # )
         message = {
-            "type" = "text",
-            "text" = "state2"
+            type : "text",
+            text : "state2"
         }
         line_bot_api.reply_message(reply_token, message)
     return "OK"
