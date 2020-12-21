@@ -16,7 +16,7 @@ def send_text_message(reply_token, text):
         print("test state1")
         line_bot_api.reply_message(reply_token, message)
         line_bot_api.reply_message(reply_token, message2)
-    elif (text == "Trigger state2"):
+    # elif (text == "Trigger state2"):
         # message = ImageSendMessage(
         #     original_content_url = '',
         #     preview_image_url = ''
