@@ -1,3 +1,4 @@
+
 import os
 import sys
 
@@ -12,23 +13,68 @@ from utils import send_text_message
 
 load_dotenv()
 
-
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "hololive",
+            "conditions": "hololive_intro",
         },
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "dest": "hololive_members",
+            "conditions": "hololive_members_intro",
         },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive_talent",
+            "conditions": "hololive_talent_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive1st",
+            "conditions": "hololive1st_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive2nd",
+            "conditions": "hololive2nd_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive_gamers",
+            "conditions": "hololive_gamers_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive3rd",
+            "conditions": "hololive3rd_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive4th",
+            "conditions": "hololive4th_intro",
+        },
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive5th",
+            "conditions": "hololive5th_intro",
+        },
+        {
+            "trigger": "go_back", 
+            "source": ["hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive_gamers", "hololive2nd","hololive3rd", "hololive4th", "hololive5th"], 
+            "dest": "user"
+        },
     ],
     initial="user",
     auto_transitions=False,
@@ -52,31 +98,31 @@ line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 
 
-@app.route("/callback", methods=["POST"])
-def callback():
-    signature = request.headers["X-Line-Signature"]
-    # get request body as text
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+# @app.route("/callback", methods=["POST"])
+# def callback():
+#     signature = request.headers["X-Line-Signature"]
+#     # get request body as text
+#     body = request.get_data(as_text=True)
+#     app.logger.info("Request body: " + body)
 
-    # parse webhook body
-    try:
-        events = parser.parse(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+#     # parse webhook body
+#     try:
+#         events = parser.parse(body, signature)
+#     except InvalidSignatureError:
+#         abort(400)
 
-    # if event is MessageEvent and message is TextMessage, then echo text
-    for event in events:
-        if not isinstance(event, MessageEvent):
-            continue
-        if not isinstance(event.message, TextMessage):
-            continue
+#     # if event is MessageEvent and message is TextMessage, then echo text
+#     for event in events:
+#         if not isinstance(event, MessageEvent):
+#             continue
+#         if not isinstance(event.message, TextMessage):
+#             continue
 
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text=event.message.text)
-        )
+#         line_bot_api.reply_message(
+#             event.reply_token, TextSendMessage(text=event.message.text)
+#         )
 
-    return "OK"
+#     return "OK"
 
 
 @app.route("/webhook", methods=["POST"])
@@ -108,12 +154,10 @@ def webhook_handler():
 
     return "OK"
 
-
 @app.route("/show-fsm", methods=["GET"])
 def show_fsm():
     machine.get_graph().draw("fsm.png", prog="dot", format="png")
     return send_file("fsm.png", mimetype="image/png")
-
 
 if __name__ == "__main__":
     port = os.environ.get("PORT", 8000)
