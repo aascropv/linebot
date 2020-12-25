@@ -14,7 +14,7 @@ from utils import send_text_message
 load_dotenv()
 
 machine = TocMachine(
-    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th"],
+    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th", "hololive_members_choosing"],
     transitions=[
         {
             "trigger": "advance",
@@ -71,8 +71,14 @@ machine = TocMachine(
             "conditions": "hololive5th_intro",
         },
         {
+            "trigger": "advance",
+            "source": ["hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers", "hololive3rd", "hololive4th", "hololive5th"],
+            "dest": "hololive_members_choosing",
+            "conditions": "choosing_members",
+        },
+        {
             "trigger": "go_back", 
-            "source": ["hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive_gamers", "hololive2nd","hololive3rd", "hololive4th", "hololive5th"], 
+            "source": ["hololive", "hololive_members",  "hololive_members_choosing"], 
             "dest": "user"
         },
     ],
@@ -146,11 +152,12 @@ def webhook_handler():
             continue
         if not isinstance(event.message.text, str):
             continue
-        print(f"\nFSM STATE: {machine.state}")
+        
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
             send_text_message(event.reply_token, "Not Entering any State")
+        print(f"\nFSM STATE: {machine.state}")
 
     return "OK"
 

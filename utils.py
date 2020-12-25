@@ -718,3 +718,72 @@ def send_carousel_template_holo5th(reply_token):
     )
     line_bot_api.reply_message(reply_token, message)
     return 'OK'
+
+def send_members_message(reply_token, text):
+    line_bot_api = LineBotApi(channel_access_token)
+    if text == '時乃空簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/zh-tw/%E6%97%B6%E4%B9%83%E7%A9%BA")
+    elif text == '櫻巫女簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/zh-tw/%E6%A8%B1%E5%B7%AB%E5%A5%B3")
+    elif text == '星街彗星簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/zh-tw/%E6%98%9F%E8%A1%97%E5%BD%97%E6%98%9F")
+    elif text == '蘿蔔子簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E8%90%9D%E5%8D%9C%E5%AD%90")
+    elif text == '白上吹雪簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%99%BD%E4%B8%8A%E5%90%B9%E9%9B%AA")
+    elif text == '夏色祭簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A4%8F%E8%89%B2%E7%A5%AD")
+    elif text == '赤井心簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E8%B5%A4%E4%BA%95%E5%BF%83")
+    elif text == '夜空梅露簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A4%9C%E7%A9%BA%E6%A2%85%E9%9C%B2")
+    elif text == '亞綺．羅森塔爾簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E4%BA%9A%E7%BB%AE%C2%B7%E7%BD%97%E6%A3%AE%E5%A1%94%E5%B0%94")
+    elif text == '百鬼綾目簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%99%BE%E9%AC%BC%E7%BB%AB%E7%9B%AE")
+    elif text == '湊阿庫婭簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%87%91%E9%98%BF%E5%BA%93%E5%A8%85")
+    elif text == '紫咲詩音簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%B4%AB%E5%92%B2%E8%AF%97%E9%9F%B3")
+    elif text == '癒月巧可簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E6%84%88%E6%9C%88%E5%B7%A7%E5%8F%AF")
+    elif text == '大空昴簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A4%A7%E7%A9%BA%E6%98%B4")
+    elif text == '貓又小粥簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%8C%AB%E5%8F%88%E5%B0%8F%E7%B2%A5")
+    elif text == '戌神沁音簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E6%88%8C%E7%A5%9E%E6%B2%81%E9%9F%B3")
+    elif text == '大神澪簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A4%A7%E7%A5%9E%E6%BE%AA")
+    elif text == '兔田佩可拉簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%85%94%E7%94%B0%E4%BD%A9%E5%85%8B%E6%8B%89")
+    elif text == '寶鐘瑪琳簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%AE%9D%E9%92%9F%E7%8E%9B%E7%90%B3")
+    elif text == '潤羽露西亞簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E6%B6%A6%E7%BE%BD%E9%9C%B2%E8%A5%BF%E5%A8%85")
+    elif text == '白銀諾艾爾簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%99%BD%E9%93%B6%E8%AF%BA%E8%89%BE%E5%B0%94")
+    elif text == '不知火芙蕾雅簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E4%B8%8D%E7%9F%A5%E7%81%AB%E8%8A%99%E8%95%BE%E9%9B%85")
+    elif text == '角卷綿芽簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E8%A7%92%E5%8D%B7%E7%BB%B5%E8%8A%BD")
+    elif text == '桐生可可簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E6%A1%90%E7%94%9F%E5%8F%AF%E5%8F%AF")
+    elif text == '天音彼方簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A4%A9%E9%9F%B3%E5%BD%BC%E6%96%B9")
+    elif text == '常闇永遠簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%B8%B8%E6%9A%97%E6%B0%B8%E8%BF%9C")
+    elif text == '姬森璐娜簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%A7%AC%E6%A3%AE%E7%92%90%E5%A8%9C")
+    elif text == '雪花菈米簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E9%9B%AA%E8%8A%B1%E8%8F%88%E7%B1%B3")
+    elif text == '獅白牡丹簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E7%8B%AE%E7%99%BD%E7%89%A1%E4%B8%B9")
+    elif text == '桃鈴音音簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E6%A1%83%E9%93%83%E9%9F%B3%E9%9F%B3")
+    elif text == '尾丸波爾卡簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E5%B0%BE%E4%B8%B8%E6%B3%A2%E5%B0%94%E5%8D%A1")
+    elif text == '魔乃阿蘿耶(卒業)簡介':
+        message = TextSendMessage("https://mzh.moegirl.org.cn/%E9%AD%94%E4%B9%83%E9%98%BF%E8%90%9D%E8%80%B6")
+    line_bot_api.reply_message(reply_token, message)
+    return 'OK'
