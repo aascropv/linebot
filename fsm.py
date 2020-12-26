@@ -1,6 +1,6 @@
 from transitions.extensions import GraphMachine
 
-from utils import send_text_message, send_image_url, send_template_message_hololive, send_carousel_template_holo_talent, send_carousel_template_holo1st , send_carousel_template_holo2nd, send_carousel_template_holo_gamers, send_carousel_template_holo3rd, send_carousel_template_holo4th, send_carousel_template_holo5th, send_members_message, live_stream_search
+from utils import send_text_message, send_image_url, send_template_message_hololive, send_carousel_template_holo_talent, send_carousel_template_holo1st , send_carousel_template_holo2nd, send_carousel_template_holo_gamers, send_carousel_template_holo3rd, send_carousel_template_holo4th, send_carousel_template_holo5th, send_members_message, live_stream_search, send_button_template_hololive_corporation
 
 import requests
 import json
@@ -56,15 +56,7 @@ class TocMachine(GraphMachine):
     def on_enter_hololive(self, event):
         print("I'm entering hololive_intro")
         reply_token = event.reply_token
-        params = {'channel_id': 9}
-        r = requests.get('https://api.holotools.app/v1/live', params=params)
-        data_json = json.loads(r.text)
-        # send_text_message(reply_token, str(data_json['live']))
-        if str(data_json["live"]) == "[]":
-            send_text_message(reply_token, "Not streaming")
-        else :
-            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
-        # send_image_url(reply_token, "https://i.ibb.co/WG7cXHV/hololive.jpg")
+        send_button_template_hololive_corporation(reply_token)
         self.go_back()
 
     def on_exit_hololive(self, event):

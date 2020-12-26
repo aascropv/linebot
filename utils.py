@@ -1015,5 +1015,31 @@ def live_stream_search(reply_token, text):
             send_text_message(reply_token, "Not streaming")
         else :
             send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
-    
+    return 'OK'
+
+def send_button_template_hololive_corporation(reply_token):
+    line_bot_api = LineBotApi(channel_access_token)
+    message = TemplateSendMessage(
+        alt_text='Buttons template',
+        template=ButtonsTemplate(
+            title='Hololive_Corporation',
+            text='Vtuber公司-Hololive',
+            thumbnail_image_url='https://i.ibb.co/WG7cXHV/hololive.jpg',
+            actions=[
+                MessageTemplateAction(
+                    label='Hololive簡介',
+                    text='https://mzh.moegirl.org.cn/Hololive'
+                ),
+                MessageTemplateAction(
+                    label='Shiny Smily Story',
+                    text='https://www.youtube.com/watch?v=68KV7JnrvDo&list=FLsNvebrweqlEEo4y6Fyw2Jg&index=3'
+                ),
+                URITemplateAction(
+                    label='Hololive官方Youtube',
+                    uri='https://www.youtube.com/channel/UCJFZiqLMntJufDCHc6bQixg'
+                )
+            ]
+        )
+    )
+    line_bot_api.reply_message(reply_token, message)
     return 'OK'
