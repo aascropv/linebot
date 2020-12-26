@@ -1,4 +1,6 @@
 import os
+import requests
+import json
 
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
@@ -7,7 +9,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSend
 load_dotenv()
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
-
 
 def send_text_message(reply_token, text):
     line_bot_api = LineBotApi(channel_access_token)
@@ -786,4 +787,233 @@ def send_members_message(reply_token, text):
     elif text == '魔乃阿蘿耶(卒業)簡介':
         message = TextSendMessage("https://mzh.moegirl.org.cn/%E9%AD%94%E4%B9%83%E9%98%BF%E8%90%9D%E8%80%B6")
     line_bot_api.reply_message(reply_token, message)
+    return 'OK'
+
+def live_stream_search(reply_token, text):
+    if text == 'hololivelive':
+        params = {'channel_id': 9}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '夜空梅露live':
+        params = {'channel_id': 1}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '姬森璐娜live':
+        params = {'channel_id': 2}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '戌神沁音live':
+        params = {'channel_id': 4}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '赤井心live':
+        params = {'channel_id': 6}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '紫咲詩音live':
+        params = {'channel_id': 10}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '大神澪live':
+        params = {'channel_id': 11}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '櫻巫女live':
+        params = {'channel_id': 12}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '白上吹雪live':
+        params = {'channel_id': 13}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '桐生可可live':
+        params = {'channel_id': 13}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '貓又小粥live':
+        params = {'channel_id': 23}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '夏色祭live':
+        params = {'channel_id': 24}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '角卷棉芽live':
+        params = {'channel_id': 25}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '白銀諾艾爾live':
+        params = {'channel_id': 26}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '潤羽露西亞live':
+        params = {'channel_id': 27}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '天音彼方live':
+        params = {'channel_id': 29}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '湊阿庫婭live':
+        params = {'channel_id': 30}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            print("test")
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '亞綺．羅森塔爾live':
+        params = {'channel_id': 32}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '百鬼綾目live':
+        params = {'channel_id': 33}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '癒月巧可live':
+        params = {'channel_id': 34}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '兔田佩可拉live':
+        params = {'channel_id': 36}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '不知火芙蕾雅live':
+        params = {'channel_id': 38}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '蘿蔔子live':
+        params = {'channel_id': 39}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '時乃空live':
+        params = {'channel_id': 41}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '大空昴live':
+        params = {'channel_id': 43}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '寶鐘瑪琳live':
+        params = {'channel_id': 44}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '常闇永遠live':
+        params = {'channel_id': 45}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    elif text == '星街彗星live':
+        params = {'channel_id': 46}
+        r = requests.get('https://api.holotools.app/v1/live', params=params)
+        data_json = json.loads(r.text)
+        if str(data_json["live"]) == "[]":
+            send_text_message(reply_token, "Not streaming")
+        else :
+            send_text_message(reply_token, "https://www.youtube.com/watch?v=" + data_json["live"][0]['yt_video_key'])
+    
     return 'OK'

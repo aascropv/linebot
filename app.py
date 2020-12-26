@@ -14,7 +14,7 @@ from utils import send_text_message
 load_dotenv()
 
 machine = TocMachine(
-    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th", "hololive_members_choosing"],
+    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th", "hololive_members_choosing", "hololive_stream_searching"],
     transitions=[
         {
             "trigger": "advance",
@@ -77,8 +77,14 @@ machine = TocMachine(
             "conditions": "choosing_members",
         },
         {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "hololive_stream_searching",
+            "conditions": "searching_live_stream",
+        },
+        {
             "trigger": "go_back", 
-            "source": ["hololive", "hololive_members",  "hololive_members_choosing"], 
+            "source": ["hololive", "hololive_members",  "hololive_members_choosing", "hololive_stream_searching"], 
             "dest": "user"
         },
     ],
