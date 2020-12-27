@@ -9,13 +9,19 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message
+from utils import send_text_message, send_image_url
 
 load_dotenv()
 
 machine = TocMachine(
-    states=["user", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th", "hololive_members_choosing", "hololive_stream_searching"],
+    states=["user", "fsm", "hololive", "hololive_members", "hololive_talent", "hololive1st", "hololive2nd", "hololive_gamers","hololive3rd", "hololive4th", "hololive5th", "hololive_members_choosing", "hololive_stream_searching"],
     transitions=[
+        {
+            "trigger": "advance",
+            "source": "user",
+            "dest": "fsm",
+            "conditions": "show_fsm",
+        },
         {
             "trigger": "advance",
             "source": "user",
@@ -84,7 +90,7 @@ machine = TocMachine(
         },
         {
             "trigger": "go_back", 
-            "source": ["hololive", "hololive_members",  "hololive_members_choosing", "hololive_stream_searching"], 
+            "source": ["fsm", "hololive", "hololive_members",  "hololive_members_choosing", "hololive_stream_searching"], 
             "dest": "user"
         },
     ],

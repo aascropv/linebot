@@ -9,6 +9,10 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
+    def show_fsm(self, event):
+        text = event.message.text
+        return text == "Fsm"
+
     def hololive_intro(self, event):
         text = event.message.text
         return text == "Hololive"
@@ -52,6 +56,15 @@ class TocMachine(GraphMachine):
     def searching_live_stream(self, event):
         text = event.message.text
         return text[-4:] == "live"
+
+    def on_enter_fsm(self, event):
+        print("I'm entering fsm")
+        reply_token = event.reply_token
+        send_image_url(reply_token, "https://i.ibb.co/4gYxkjW/fsm.png")
+        self.go_back(event)
+    
+    def on_exit_fsm(self, event):
+        print("Leaving fsm")
 
     def on_enter_hololive(self, event):
         print("I'm entering hololive_intro")
