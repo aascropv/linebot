@@ -1,15 +1,45 @@
-# TOC Project 2020
+# LineBot： Vtuber_Holo_Info
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
 
-
-Template Code for TOC Project 2020
+TOC Project 2020
 
 A Line bot based on a finite state machine
 
-More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+## Introduction
+
+### linebot
+![](https://i.imgur.com/9lxyKCt.png)
+![](https://i.imgur.com/yxvz93v.png)
+
+### **Hololive**
+### 輸入 **"Hololive"** ，顯示 Hololive 的 Buttons Template。
+![](https://i.imgur.com/A3ukgYE.jpg)
+![](https://i.imgur.com/vgJMdK0.png)
+
+可選擇查看 Hololive 介紹、Hololive社歌`Shiny Smily Story`
+和Hololive Youtube官方頻道。
+
+
+
+### **Hololive members**
+### 輸入 **"Hololive member"** ，顯示 Hololive 成員的 Carousel Template
+![](https://i.imgur.com/Sa3i7Jm.jpg)
+
+顯示0期到5期生(包含Gamers)的列表，選擇要進入哪一期生的介紹
+![](https://i.imgur.com/WL6Mu0r.png)
+接著可以選擇要查看人物介紹或者是進入其Youtube頻道
+### 輸入 "***live"，可以查看其當前有沒有再直播中
+![](https://i.imgur.com/XLj1vO0.png)
+
+### Finite State Machine
+![](https://i.imgur.com/t44YWiM.png)
+![](https://i.imgur.com/DzVeT83.png)
+
+
+
 
 ## Setup
 
@@ -42,7 +72,6 @@ Otherwise, you might not be able to run your code.
 
 #### Run Locally
 You can either setup https server or using `ngrok` as a proxy.
-
 #### a. Ngrok installation
 * [ macOS, Windows, Linux](https://ngrok.com/download)
 
@@ -70,8 +99,7 @@ python3 app.py
 Or You can use [servo](http://serveo.net/) to expose local servers to the internet.
 
 
-## Finite State Machine
-![fsm](./img/show-fsm.png)
+
 
 ## Usage
 The initial state is set to `user`.
