@@ -57,7 +57,7 @@ class TocMachine(GraphMachine):
         print("I'm entering hololive_intro")
         reply_token = event.reply_token
         send_button_template_hololive_corporation(reply_token)
-        self.go_back()
+        self.go_back(event)
 
     def on_exit_hololive(self, event):
         print("Leaving hololive_intro")
@@ -102,7 +102,6 @@ class TocMachine(GraphMachine):
         print("I'm entering hololivegamers")
         reply_token = event.reply_token
         send_carousel_template_holo_gamers(reply_token)
-        self.advance()
     
     def on_exit_hololive_gamers(self, event):
         print("Leaving hololivegamers")
@@ -150,7 +149,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         print(text)
         live_stream_search(reply_token, text)
-        self.go_back()
+        self.go_back(event)
 
     def on_exit_hololive_stream_searching(self, event):
         print("Leaving hololive_stream_searching")
